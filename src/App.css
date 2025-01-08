@@ -7,6 +7,7 @@ body {
 .hero-section.bg-light.py-5 {
   background-color: #ffffff !important;
 }
+
 .navbar .btn-outline-dark {
   border: 2px solid #000;
   font-weight: 500;
@@ -17,7 +18,7 @@ body {
 }
 
 .navbar .btn {
-  border-radius: 30px; 
+  border-radius: 30px;
 }
 
 .navbar .nav-link {
@@ -98,27 +99,27 @@ body {
 
 .social-icons {
   display: flex;
-  gap: 15px; 
+  gap: 15px;
 }
 
 .social-icon-circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; 
+  width: 40px;
   height: 40px;
-  border-radius: 50%; 
-  background-color: #1a1f2a; 
-  color: #bbb; 
+  border-radius: 50%;
+  background-color: #1a1f2a;
+  color: #bbb;
   font-size: 18px;
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .social-icon-circle:hover {
-  background-color: #1fa637; 
-  color: white; 
-  transform: scale(1.1); 
+  background-color: #1fa637;
+  color: white;
+  transform: scale(1.1);
 }
 
 .footer-divider {
@@ -156,7 +157,7 @@ body {
 }
 
 .hero-heading span {
-  color: #1fa637; 
+  color: #1fa637;
 }
 
 .hero-benefits {
@@ -336,8 +337,12 @@ h2 {
 }
 
 /* primary color */
-.primary-color{
+.primary-color {
   color: #1fa637 !important;
+}
+
+.primary-background-color {
+  background-color: #1fa637 !important;
 }
 
 .secondary-color {
@@ -350,7 +355,7 @@ h2 {
 
 /* result list */
 .parking-container {
-  max-width: 600px; 
+  max-width: 600px;
   margin: auto;
 }
 
@@ -438,4 +443,14 @@ h2 {
 
 .contactNumber {
   color: #131722 !important;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #1fa637 !important;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: #1fa637 !important;
 }

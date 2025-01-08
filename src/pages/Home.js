@@ -39,18 +39,30 @@ const Home = () => {
         <Filter />
       </Col>
       <Col lg={6} className="text-center">
-        <img src={home} alt="Happy driver" className="img-fluid rounded" />
+        <img src={home} alt="Happy driver" className="img-fluid rounded ms-4" />
       </Col>
-      <Col lg={12}>
-        {reviews.length > 0 &&
-          reviews.map((review) => (
-            <div>
-              {Star(review.rating)}
-              <p>{review.comment}</p>
-              <p>{review.user}</p>
-              <p>{review.location}</p>
-            </div>
-          ))}
+      <Col lg={12} className="mt-5 text-center">
+        <h1 className="display-4 fw-bold mb-4 secondary-color">
+          What <span className="primary-color">{"{ clients say }"}</span>
+        </h1>
+      </Col>
+      <Col lg={12} className="mt-5">
+        <div className="d-flex justify-content-between">
+          {reviews.length > 0 &&
+            reviews.map((review, index) => (
+              <div
+                key={index}
+                className="d-flex flex-column align-items-center me-4"
+              >
+                <div className="d-flex align-items-center mb-2">
+                  {Star(review.rating)}
+                </div>
+                <p className="mb-0 text-muted">{review.comment}</p>
+                <p className="mb-0 text-muted">{review.user}</p>
+                <p className="mb-0 text-muted">{review.location}</p>
+              </div>
+            ))}
+        </div>
       </Col>
     </>
   );
