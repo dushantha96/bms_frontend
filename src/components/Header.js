@@ -87,12 +87,12 @@ const Header = () => {
                 </Dropdown>
               </>
             ) : (
-              <Nav.Link href="/login" className="me-2 px-4">
+              <Nav.Link href="/login">
                 Log in
               </Nav.Link>
             )}
             {!token && (
-              <Nav.Link href="/signup" className="me-2 px-4">
+              <Nav.Link href="/signup">
                 Sign Up
               </Nav.Link>
             )}
