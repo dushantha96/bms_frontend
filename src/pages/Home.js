@@ -1,6 +1,6 @@
-import React from "react";
-import { Col } from "react-bootstrap";
-import Filter from "../components/Filter";
+import React from 'react';
+import { Col } from 'react-bootstrap';
+import Filter from '../components/Filter';
 // import home from './home.jpg';
 import home from "./homeee.gif";
 
@@ -22,9 +22,13 @@ const Home = () => {
           over 13 million drivers and enjoy stress-free, cheaper parking.
         </p>
         <Filter />
-      </Col>
+      </Col>      
       <Col lg={6} className="text-center">
-        <img src={home} alt="Happy driver" className="img-fluid rounded ms-5" />
+        <img
+          src={home}
+          alt="Happy driver"
+          className="img-fluid rounded"
+        />
       </Col>
     </>
   );

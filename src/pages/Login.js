@@ -113,7 +113,7 @@ const Login = () => {
                   </Form>
               </Card.Body>
             <Card.Footer className="text-center">
-                <small>Already have an account? <a href="/login">Login</a></small>
+                <small>Already have an account? <a href="/signup">Sign Up</a></small>
             </Card.Footer>
             </Card>
         </Col>        

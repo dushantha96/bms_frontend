@@ -1,12 +1,13 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import logo from "./logo.png";
+import logo from './logo.png';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <Container>
         <Row className="justify-content-between">
+          
           <Col md={3}>
             <div>
               <img className="footer-logo" src={logo} alt="BMS Logo" />
@@ -92,7 +93,7 @@ const Footer = () => {
         </Row>
 
         <hr className="footer-divider" />
-
+        
         <Row className="justify-content-between">
           <Col md={12} className="text-center">
             <p>© Copyright BMS 2025</p>

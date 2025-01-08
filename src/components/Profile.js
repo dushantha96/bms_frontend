@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
-import { Form, Button, Card, Alert, Spinner } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Form, Button, Spinner, Row, Col } from 'react-bootstrap';
 import AuthService from '../services/AuthService'; 
-import { useNavigate } from 'react-router-dom';
+import AutoAlert from './AutoAlert';
 
 const Profile = () => {
     const [formData, setFormData] = useState({
+        id: 0,
         firstName: '',
         lastName: '',
         email: '',
+        currentPassword: '',
         password: '',
         confirmPassword: '',
     });
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [apiError, setApiError] = useState('');
-    const navigate = useNavigate();
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMEssage] = useState({ title: '', message: '', type: ''});
+    const [isLoading, setPageLoad] = useState(true);
 
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -22,6 +25,10 @@ const Profile = () => {
         ...formData,
         [name]: value,
       });
+    };
+
+    const handleAlertClose = () => {
+      setShowAlert(false); 
     };
 
     const validateForm = () => {
@@ -41,10 +48,6 @@ const Profile = () => {
         errors.email = 'Email is invalid';
       }
   
-      if (!formData.password) {
-        errors.password = 'Password is required';
-      } 
-  
       return errors;
     };
   
@@ -59,114 +62,169 @@ const Profile = () => {
       }
       
       setIsSubmitting(true);
-      setApiError('');
 
-      AuthService.signup(formData.firstName, formData.lastName, formData.email, formData.password, formData.confirmPassword).then(
+      AuthService.updateProfile(formData.id, formData.firstName, formData.lastName, formData.email, formData.currentPassword, formData.password, formData.confirmPassword).then(
         () => {
-          navigate('/login');
-          window.location.reload();
+          setShowAlert(true);
+          setAlertMEssage({
+              title: 'Success',
+              message: 'Profile Updated Successfully.',
+              type: 'success'
+          });
           
           setIsSubmitting(false);
         },
         error => {            
-          error.response && error.response.data.error
-            ? setApiError(error.response.data.error) 
-            : setApiError('Network error. Please try again later.');
+          const apiError = error.response && error.response.data.error
+            ? error.response.data.error 
+            : 'Network error. Please try again later.';
+          setShowAlert(true);
+          setAlertMEssage({
+            title: 'Error',
+            message: apiError,
+            type: 'error'
+          });
           setIsSubmitting(false);
         }
       );
     };
 
+    useEffect(() => {  
+      AuthService.getProfile(AuthService.getUserId()).then(
+        (response) => {
+          setFormData(prevData => ({
+            ...prevData, 
+            id: response.data.id,
+            firstName: response.data.first_name,
+            lastName: response.data.last_name,
+            email: response.data.email,
+          }));
+        },
+        (error) => {
+          const apiError = error.response && error.response.data.error
+            ? error.response.data.error 
+            : 'Network error. Please try again later.';
+          setShowAlert(true);
+          setAlertMEssage({
+            title: 'Error',
+            message: apiError,
+            type: 'error'
+          });
+        }
+      );
+    }, []);
+
     return (
-      <>
-        <Card className="shadow-sm">
-            <Card.Body>
-                <h2 className="text-center mb-4">Sign Up</h2>
-                <Form onSubmit={handleSignUp}>
-                
-                <Form.Group controlId="formFirstName" className="mb-3">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    isInvalid={!!errors.firstName}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                    {errors.firstName}
-                    </Form.Control.Feedback>
-                </Form.Group>
-
-                <Form.Group controlId="formLastName" className="mb-3">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    isInvalid={!!errors.lastName}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                    {errors.lastName}
-                    </Form.Control.Feedback>
-                </Form.Group>
-
-                <Form.Group controlId="formEmail" className="mb-3">
-                    <Form.Label>Email Address</Form.Label>
-                    <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    isInvalid={!!errors.email}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                    {errors.email}
-                    </Form.Control.Feedback>
-                </Form.Group>
-                
-                <Form.Group controlId="formPassword" className="mb-3">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    isInvalid={!!errors.password}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                    {errors.password}
-                    </Form.Control.Feedback>
-                </Form.Group>
-
-                <Form.Group controlId="formConfirmPassword" className="mb-3">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control
-                    type="password"
-                    name="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    isInvalid={!!errors.confirmPassword}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                    {errors.confirmPassword}
-                    </Form.Control.Feedback>
-                </Form.Group>
-                
-                {apiError && <Alert variant="danger" className="mt-3">{apiError}</Alert>}
-
-                <Button type="submit" className="w-100 btn-lg primary-background" disabled={isSubmitting}>
-                    {isSubmitting ? <Spinner animation="border" size="sm" /> : 'Sign In'}
-                </Button>
-                </Form>
-            </Card.Body>
-            <Card.Footer className="text-center">
-                <small>Don't have an account? <a href="/signup">Sign Up</a></small>
-            </Card.Footer>
-        </Card>
-      </>
+      <Form>             
+        <Row>
+          <Col md={6}>
+            <Form.Group controlId="formFirstName" className="mb-3">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                isInvalid={!!errors.firstName}
+                />
+                <Form.Control.Feedback type="invalid">
+                {errors.firstName}
+                </Form.Control.Feedback>
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId="formLastName" className="mb-3">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                isInvalid={!!errors.lastName}
+                />
+                <Form.Control.Feedback type="invalid">
+                {errors.lastName}
+                </Form.Control.Feedback>
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId="formEmail" className="mb-3">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control
+              type="email"
+              placeholder="Enter email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              isInvalid={!!errors.email}
+              />
+              <Form.Control.Feedback type="invalid">
+              {errors.email}
+              </Form.Control.Feedback>
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId="formCurrentPassword" className="mb-3">
+                <Form.Label>Current Password</Form.Label>
+                <Form.Control
+                type="password"
+                name="currentPassword"
+                value={formData.currentPassword}
+                onChange={handleChange}
+                isInvalid={!!errors.currentPassword}
+                />
+                <Form.Control.Feedback type="invalid">
+                {errors.currentPassword}
+                </Form.Control.Feedback>
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId="formPassword" className="mb-3">
+                <Form.Label>New Password</Form.Label>
+                <Form.Control
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                isInvalid={!!errors.password}
+                />
+                <Form.Control.Feedback type="invalid">
+                {errors.password}
+                </Form.Control.Feedback>
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId="formConfirmPassword" className="mb-3">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              isInvalid={!!errors.confirmPassword}
+              />
+              <Form.Control.Feedback type="invalid">
+              {errors.confirmPassword}
+              </Form.Control.Feedback>
+            </Form.Group>
+          </Col>
+        </Row>   
+        <Row>
+          <Col md={12} className=''>           
+            <Button type="submit" className="primary-background" disabled={isSubmitting}>
+              {isSubmitting ? <><Spinner animation="border" size="sm" /> Updating..</>  : 'Update'}
+            </Button>
+          </Col>
+        </Row>
+        {showAlert && (
+            <AutoAlert
+                title={alertMessage.title}
+                message={alertMessage.message}
+                type={alertMessage.type}
+                onClose={handleAlertClose} 
+            />
+        )}
+      </Form>
     );
 };
 

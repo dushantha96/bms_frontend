@@ -3,11 +3,12 @@ import { Col } from "react-bootstrap";
 import AuthService from '../services/AuthService';
 import Profile from '../components/Profile';
 import Bookings from '../components/Bookings';
+import Spots from '../components/Spots';
 
 const Dashboard = () => {
-  const [userType, setUserType] = useState(false);
+  const [userType, setUserType] = useState(0);
   const [activeTab, setActiveTab] = useState("past");
-  const [activeSection, setActiveSection] = useState("bookings");
+  const [activeSection, setActiveSection] = useState("profile");
 
   const getUserType = () => {
     setUserType(AuthService.getUserType());    
@@ -31,16 +32,20 @@ const Dashboard = () => {
 
   return (
     <>
-      <Col md={3} className="sidebar">
+      <Col md={2} className="sidebar">
           <nav className="nav flex-column">
+            {/* {userType == 1 && (   
+              <a href="#" className={`nav-link ${activeSection === "users" ? "active" : ""}`} onClick={() => setActiveSection("users")}>
+                Users
+              </a>
+            )} */}
+            {(userType == 1 || userType == 2)  && (  
+              <a href="#" className={`nav-link ${activeSection === "spots" ? "active" : ""}`} onClick={() => setActiveSection("spots")}>
+                Spots
+              </a>
+            )}                       
             <a href="#" className={`nav-link ${activeSection === "bookings" ? "active" : ""}`} onClick={() => setActiveSection("bookings")}>
-              Bookings made
-            </a>
-            <a href="#" className={`nav-link ${activeSection === "messages" ? "active" : ""}`} onClick={() => setActiveSection("messages")}>
-              Messages
-            </a>
-            <a href="#" className={`nav-link ${activeSection === "billing" ? "active" : ""}`} onClick={() => setActiveSection("billing")}>
-              Billing & withdrawals
+              Bookings
             </a>
             <a href="#" className={`nav-link ${activeSection === "profile" ? "active" : ""}`} onClick={() => setActiveSection("profile")}>
               My profile
@@ -51,40 +56,11 @@ const Dashboard = () => {
           </nav>
         </Col>
 
-      <Col md={9} className="content">
-        {activeSection === "bookings" && <Bookings />}
+      <Col md={10} className="content">
+        {activeSection === "bookings" && <Bookings userType={userType} />}
         {activeSection === "profile" && <Profile />}
+        {activeSection === "spots" && <Spots userType={userType} />}
       </Col>
-
-      {/* <Col md={9} className="content">
-        <h2>My Bookings</h2>
-
-        <Tab.Container activeKey={activeTab} onSelect={(k) => setActiveTab(k)}>
-          <Nav variant="tabs" className="booking-tabs">
-            <Nav.Item>
-              <Nav.Link eventKey="in-progress">In progress</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="upcoming">Upcoming</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="past">Past</Nav.Link>
-            </Nav.Item>
-          </Nav>
-
-          <Tab.Content>
-            <Tab.Pane eventKey="in-progress">
-              <EmptyState />
-            </Tab.Pane>
-            <Tab.Pane eventKey="upcoming">
-              <EmptyState />
-            </Tab.Pane>
-            <Tab.Pane eventKey="past">
-              <EmptyState />
-            </Tab.Pane>
-          </Tab.Content>
-        </Tab.Container>
-      </Col> */}
     </>
   );
 };

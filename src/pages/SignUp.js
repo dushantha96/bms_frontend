@@ -10,6 +10,7 @@ const SignUp = () => {
         email: '',
         password: '',
         confirmPassword: '',
+        role: 'driver'
     });
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,7 +62,7 @@ const SignUp = () => {
       setIsSubmitting(true);
       setApiError('');
 
-      AuthService.signup(formData.firstName, formData.lastName, formData.email, formData.password, formData.confirmPassword).then(
+      AuthService.signup(formData.firstName, formData.lastName, formData.email, formData.password, formData.confirmPassword, formData.role).then(
         () => {
           navigate('/login');
           window.location.reload();
@@ -156,6 +157,29 @@ const SignUp = () => {
                         {errors.confirmPassword}
                       </Form.Control.Feedback>
                     </Form.Group>
+
+                    <Form.Group controlId="formRole" className="mb-3">
+                      <Form.Label>Role</Form.Label>
+                      <div className="d-flex align-items-center">
+                          <Form.Check 
+                              type="radio" 
+                              label="Driver" 
+                              name="role" 
+                              value="driver" 
+                              checked={formData.role === 'driver'} 
+                              onChange={handleChange} 
+                              className="me-3"
+                          />
+                          <Form.Check 
+                              type="radio" 
+                              label="Parking Owner" 
+                              name="role" 
+                              value="parkingOwner" 
+                              checked={formData.role === 'parkingOwner'} 
+                              onChange={handleChange} 
+                          />
+                      </div>
+                    </Form.Group>
                     
                     {apiError && <Alert variant="danger" className="mt-3">{apiError}</Alert>}
 
@@ -165,7 +189,7 @@ const SignUp = () => {
                   </Form>
               </Card.Body>
               <Card.Footer className="text-center">
-                  <small>Don't have an account? <a href="/signup">Sign Up</a></small>
+                  <small>Don't have an account? <a href="/login">Log In</a></small>
               </Card.Footer>
             </Card>
         </Col>        
