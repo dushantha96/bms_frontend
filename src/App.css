@@ -1,0 +1,436 @@
+body {
+  font-family: 'Poppins' !important;
+  background-color: #ffffff !important;
+}
+
+.hero-section.bg-light.py-5 {
+  background-color: #ffffff !important;
+}
+
+.navbar .btn-outline-dark {
+  border: 2px solid #000;
+  font-weight: 500;
+}
+
+.navbar .btn-success {
+  font-weight: 500;
+}
+
+.navbar .btn {
+  border-radius: 30px;
+}
+
+.navbar .nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+
+.hero-section {
+  background: #f8f9fa;
+}
+
+.hero-section h1 {
+  font-size: 2.3rem;
+}
+
+.hero-section .list-unstyled li {
+  font-size: 12px;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.hero-section .form-control-lg {
+  font-size: 1rem;
+  padding: 0.75rem;
+}
+
+.hero-section .btn-lg {
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+/* footer */
+.footer {
+  background-color: #131722;
+  color: white;
+  padding-top: 50px;
+  padding-bottom: 15px;
+  font-size: 14px;
+}
+
+.footer-logo {
+  width: 100%;
+  padding-right: 20px;
+}
+
+.footer h5 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 15px;
+}
+
+.footer ul li a {
+  color: #bbb;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer .address p {
+  color: #bbb;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer ul li a:hover {
+  color: #1fa637;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1a1f2a;
+  color: #bbb;
+  font-size: 18px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icon-circle:hover {
+  background-color: #1fa637;
+  color: white;
+  transform: scale(1.1);
+}
+
+.footer-divider {
+  border-top: 1px solid #444;
+  margin: 20px 0;
+}
+
+.footer a {
+  color: #bbb;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .text-md-end {
+    text-align: center !important;
+  }
+}
+
+/* home */
+.hero-container {
+  margin-top: 60px;
+  padding: 20px 0;
+}
+
+.hero-heading {
+  font-size: 2.8rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.hero-heading span {
+  color: #1fa637;
+}
+
+.hero-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.hero-benefit {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.hero-benefit i {
+  color: #1fa637;
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+.hero-text {
+  font-size: 16px;
+  color: #666;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .hero-benefits {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* search */
+.search-container {
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-tabs {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.search-tabs button {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #f8f9fa;
+  transition: 0.3s;
+}
+
+.search-tabs button.active {
+  background: #e7f5e5;
+  color: #1fa637;
+}
+
+.search-input {
+  margin-top: 15px;
+}
+
+.search-input input {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.date-time-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.date-time-container input {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.search-button {
+  margin-top: 20px;
+  background: #1fa637;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.search-button:hover {
+  background: #1fa637;
+}
+
+/* dashboard */
+.my-bookings {
+  background-color: #f8f9fa;
+  height: 100vh;
+  padding: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #f4f6f8;
+  padding: 20px;
+  height: 100%;
+}
+
+.nav-link {
+  color: #6c757d;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.nav-link.active {
+  color: black;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #00b67a;
+}
+
+/* Content */
+.content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.booking-tabs .nav-link {
+  color: #6c757d;
+}
+
+.booking-tabs .nav-link.active {
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.empty-state img {
+  width: 150px;
+  margin-bottom: 15px;
+}
+
+.empty-state h5 {
+  font-weight: bold;
+}
+
+.empty-state p {
+  color: #6c757d;
+}
+
+/* primary color */
+.primary-color {
+  color: #1fa637 !important;
+}
+
+.secondary-color {
+  color: #131722;
+}
+
+.primary-background {
+  background-color: #1fa637 !important;
+}
+
+/* result list */
+.parking-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.parking-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.parking-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.parking-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.parking-card:hover {
+  transform: scale(1.02);
+}
+
+.parking-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.parking-img {
+  border-radius: 8px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.parking-link {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.parking-link:hover {
+  color: #0056b3;
+}
+
+.parking-button {
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  color: white !important;
+}
+
+.parking-button:hover {
+  background-color: #218838;
+}
+
+.form-control:focus {
+  border-color: #1fa637 !important;
+  box-shadow: 0 0 0 0.25rem rgba(31, 166, 55, 0.25) !important;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(31, 166, 55, 0.25) !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #ffffff !important;
+  background-color: #1fa637db !important;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  color: #1fa637 !important;
+}
+
+.contactNo {
+  text-decoration: none !important;
+}
