@@ -1,10 +1,25 @@
-import React from 'react';
-import { Col } from 'react-bootstrap';
-import Filter from '../components/Filter';
-// import home from './home.jpg';
+import React, { useState, useEffect } from "react";
+import { Col } from "react-bootstrap";
+import Filter from "../components/Filter";
 import home from "./homeee.gif";
+import ReviewService from "../services/ReviewService";
+import Star from "../components/Star";
 
 const Home = () => {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    ReviewService.top().then(
+      (response) => {
+        setReviews(response.data);
+      },
+      (error) => {
+        error.response && error.response.data.error
+          ? console.log(error.response.data.error)
+          : console.log("Network error. Please try again later.");
+      }
+    );
+  }, []);
   return (
     <>
       <Col lg={6} className="text-center text-lg-start">
@@ -22,13 +37,20 @@ const Home = () => {
           over 13 million drivers and enjoy stress-free, cheaper parking.
         </p>
         <Filter />
-      </Col>      
+      </Col>
       <Col lg={6} className="text-center">
-        <img
-          src={home}
-          alt="Happy driver"
-          className="img-fluid rounded"
-        />
+        <img src={home} alt="Happy driver" className="img-fluid rounded" />
+      </Col>
+      <Col lg={12}>
+        {reviews.length > 0 &&
+          reviews.map((review) => (
+            <div>
+              {Star(review.rating)}
+              <p>{review.comment}</p>
+              <p>{review.user}</p>
+              <p>{review.location}</p>
+            </div>
+          ))}
       </Col>
     </>
   );
