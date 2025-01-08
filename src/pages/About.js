@@ -5,8 +5,8 @@ import home from "../assests/aboutUs.png";
 const About = () => {
   return (
     <>
-      <Col lg={12} className="text-center">
-        <h1 className="display-4 fw-bold mb-5">
+      <Col lg={12} className="text-center mb-5">
+        <h1 className="display-4 fw-bold">
           Want to <span className="primary-color">{"{ let know }"}</span> about
           us!
         </h1>

@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <>
       <Col lg={12} className="text-center mb-5">
-        <h1 className="display-4 fw-bold mb-5">
+        <h1 className="display-4 fw-bold mb-2">
           <span className="primary-color">{"{ Contact }"}</span> Us!
         </h1>
       </Col>
@@ -15,7 +15,7 @@ const Contact = () => {
         <img src={home} alt="Happy driver" style={{ height: "25em" }} />
       </Col>
       <Col lg={6} className="text-center">
-        <p className="text-muted mb-4 fw-bold">BOOk MY SPOT (PVT) LTD</p>
+        <h4 className="mb-4 fw-bold primary-color">BOOk MY SPOT (PVT) LTD</h4>
         <p className="text-muted mb-4 fw-bold">
           Dunn's Hat Factory
           <br />
@@ -34,11 +34,11 @@ const Contact = () => {
             <i className="fas fa-phone"></i>
           </a>
           <a
-            href="tel:+1234567890"
+            href="tel:+44 1234 123456"
             aria-label="Telephone"
             className="contactNo txt-muted"
           >
-            <span className="fw-bold">+1234567890</span>{" "}
+            <span className="fw-bold contactNumber">call us on +44 1234 123456</span>{" "}
           </a>
         </p>
       </Col>
