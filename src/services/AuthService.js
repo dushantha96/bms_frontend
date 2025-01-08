@@ -25,12 +25,37 @@ class AuthService {
         });
     }
 
-    signup(first_name, last_name, email, password, password_confirmation) {
+    signup(first_name, last_name, email, password, password_confirmation, role) {
         return axios
-        .post(API_URL + "signup", { first_name, last_name, email, password, password_confirmation })
+        .post(API_URL + "signup", { first_name, last_name, email, password, password_confirmation, role })
         .then(response => { 
             return response.data;
         });
+    }
+
+    getProfile(user_id) {
+        return axios
+        .get(API_URL + "profile", {
+            params: { user_id }, 
+            headers: this.authHeader(), 
+        })
+        .then(response => { 
+            return response.data;
+        });
+    }
+
+    updateProfile(user_id, first_name, last_name, email, current_password, new_password, password_confirmation) {
+        return axios
+        .post(API_URL + "profile", { user_id, first_name, last_name, email, current_password, new_password, password_confirmation }, { headers: this.authHeader() })
+        .then(response => { 
+            return response.data;
+        });
+    }
+
+    isLoggedIn() {
+        const token = localStorage.getItem('token');
+
+        return !!token;
     }
 
     getUserName() {
@@ -49,6 +74,15 @@ class AuthService {
             return jwtDecode(token).userType;
         }
         return '';
+    }
+
+    getUserId() {
+        const token = localStorage.getItem('token');
+
+        if (token) {
+            return jwtDecode(token).userId;
+        }
+        return 0;
     }
 
     authHeader() {
