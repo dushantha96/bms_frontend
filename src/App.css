@@ -343,6 +343,7 @@ h2 {
 
 .primary-background-color {
   background-color: #1fa637 !important;
+  color: #ffffff !important;
 }
 
 .secondary-color {
@@ -453,4 +454,8 @@ h2 {
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
   color: #1fa637 !important;
+}
+
+button {
+  border: none !important;
 }

@@ -119,7 +119,7 @@ const Profile = () => {
         <Row>
           <Col md={6}>
             <Form.Group controlId="formFirstName" className="mb-3">
-                <Form.Label>First Name</Form.Label>
+                <Form.Label className='text-muted'>First Name</Form.Label>
                 <Form.Control
                 type="text"
                 name="firstName"
@@ -134,7 +134,7 @@ const Profile = () => {
           </Col>
           <Col md={6}>
             <Form.Group controlId="formLastName" className="mb-3">
-                <Form.Label>Last Name</Form.Label>
+                <Form.Label className='text-muted'>Last Name</Form.Label>
                 <Form.Control
                 type="text"
                 name="lastName"
@@ -149,7 +149,7 @@ const Profile = () => {
           </Col>
           <Col md={6}>
             <Form.Group controlId="formEmail" className="mb-3">
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label className='text-muted'>Email Address</Form.Label>
               <Form.Control
               type="email"
               placeholder="Enter email"
@@ -165,7 +165,7 @@ const Profile = () => {
           </Col>
           <Col md={6}>
             <Form.Group controlId="formCurrentPassword" className="mb-3">
-                <Form.Label>Current Password</Form.Label>
+                <Form.Label className='text-muted'>Current Password</Form.Label>
                 <Form.Control
                 type="password"
                 name="currentPassword"
@@ -180,7 +180,7 @@ const Profile = () => {
           </Col>
           <Col md={6}>
             <Form.Group controlId="formPassword" className="mb-3">
-                <Form.Label>New Password</Form.Label>
+                <Form.Label className='text-muted'>New Password</Form.Label>
                 <Form.Control
                 type="password"
                 name="password"
@@ -195,7 +195,7 @@ const Profile = () => {
           </Col>
           <Col md={6}>
             <Form.Group controlId="formConfirmPassword" className="mb-3">
-              <Form.Label>Confirm Password</Form.Label>
+              <Form.Label className='text-muted'>Confirm Password</Form.Label>
               <Form.Control
               type="password"
               name="confirmPassword"

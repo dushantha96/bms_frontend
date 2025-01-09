@@ -12,7 +12,7 @@ const Confirmation = ({ show, title, message, onConfirm, onCancel, isSubmitting 
         <Button variant="secondary" onClick={onCancel}>
           Cancel
         </Button>
-        <Button className="danger" onClick={onConfirm} disabled={isSubmitting}>
+        <Button className="danger primary-background-color" onClick={onConfirm} disabled={isSubmitting}>
             {isSubmitting ? (
                 <Spinner animation="border" size="sm" />
             ) : (

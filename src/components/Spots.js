@@ -134,7 +134,7 @@ const Spots = (data) => {
                 <div className="d-flex justify-content-between align-items-center mb-3">
                     <h3>Spots</h3>
                     { data.userType == 2 && (
-                        <button className="btn btn-primary" onClick={() => handleShow(spot)}>
+                        <button className="btn primary-background-color" onClick={() => handleShow(spot)}>
                             Add Spot
                         </button>
                     )}
