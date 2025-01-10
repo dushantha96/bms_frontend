@@ -1,9 +1,6 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import home from "../assests/aboutUs.png";
-import icon1 from "../assests/icon1.png";
-import icon2 from "../assests/icon2.png";
-import icon4 from "../assests/icon4.png";
 
 const About = () => {
   return (
@@ -50,58 +47,6 @@ const About = () => {
           challenge.
         </p>
       </Col>
-      <div className="row mt-5">
-        <Col lg={4} className="text-center">
-          <img
-            src={icon1}
-            alt="Happy driver"
-            className="ms-4"
-            style={{ height: "9em", objectFit: "cover" }}
-          />
-          <br />
-          <h4 className="mt-4 secondary-color fw-bold">
-            {"{Seamless}"}
-            <span className="primary-color"> parking</span>
-          </h4>
-          <br />
-          <p className="text-muted text-center mb-4">
-            Reduces time spent circling around looking for a spot
-          </p>
-        </Col>
-        <Col lg={4} className="text-center">
-          <img
-            src={icon2}
-            alt="Happy driver"
-            className="ms-4"
-            style={{ height: "9em", objectFit: "cover" }}
-          />
-          <br />
-          <h4 className="mt-4 secondary-color fw-bold">
-            <span className="primary-color">{"{Anytime}"}, </span>anywhere
-          </h4>
-          <br />
-          <p className="text-muted text-center mb-4">
-            Real-time availability of parking spots, ensuring drivers can book a
-            spot that is genuinely available
-          </p>
-        </Col>
-        <Col lg={4} className="text-center">
-          <img
-            src={icon4}
-            alt="Happy driver"
-            className="ms-4"
-            style={{ height: "9em", objectFit: "cover" }}
-          />
-          <br />
-          <h4 className="mt-4 secondary-color fw-bold">
-            <span className="primary-color">{"{Unlimited}"} </span>locations
-          </h4>
-          <br />
-          <p className="text-muted text-center mb-4">
-            Offering Unlimited Locations for a parking service
-          </p>
-        </Col>
-      </div>
     </>
   );
 };

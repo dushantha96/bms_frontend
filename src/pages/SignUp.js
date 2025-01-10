@@ -84,13 +84,14 @@ const SignUp = () => {
         <Col md={6}>
             <Card className="shadow-sm">
               <Card.Body>
-                  <h2 className="text-center mb-4">Sign Up</h2>
+                  <h2 className="text-center mb-4 fw-bold">Sign Up</h2>
                   <Form onSubmit={handleSignUp}>
                     
                     <Form.Group controlId="formFirstName" className="mb-3">
                       <Form.Label>First Name</Form.Label>
                       <Form.Control
                         type="text"
+                        placeholder="Enter first name"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
@@ -105,6 +106,7 @@ const SignUp = () => {
                       <Form.Label>Last Name</Form.Label>
                       <Form.Control
                         type="text"
+                        placeholder="Enter last name"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
@@ -131,9 +133,10 @@ const SignUp = () => {
                     </Form.Group>
                     
                     <Form.Group controlId="formPassword" className="mb-3">
-                      <Form.Label>Confirm Password</Form.Label>
+                      <Form.Label>Confirm</Form.Label>
                       <Form.Control
                         type="password"
+                        placeholder="Enter the password"
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
@@ -148,6 +151,7 @@ const SignUp = () => {
                       <Form.Label>Confirm Password</Form.Label>
                       <Form.Control
                         type="password"
+                        placeholder="Enter the password again"
                         name="confirmPassword"
                         value={formData.confirmPassword}
                         onChange={handleChange}

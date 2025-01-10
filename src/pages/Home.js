@@ -4,6 +4,9 @@ import Filter from "../components/Filter";
 import home from "./homeee.gif";
 import ReviewService from "../services/ReviewService";
 import Star from "../components/Star";
+import icon1 from "../assests/icon1.png";
+import icon2 from "../assests/icon2.png";
+import icon4 from "../assests/icon4.png";
 
 const Home = () => {
   const [reviews, setReviews] = useState([]);
@@ -39,14 +42,60 @@ const Home = () => {
         <Filter />
       </Col>
       <Col lg={6} className="text-center">
-        <img src={home} alt="Happy driver" className="img-fluid rounded ms-4" />
+        <img src={home} alt="Happy driver" className="img-fluid rounded ms-4 mt-5" />
       </Col>
-      <Col lg={12} className="mt-5 text-center">
+
+      <div className="row customMt customMb">
+        <Col lg={4} className="text-center">
+          <img
+            src={icon1}
+            alt="Happy driver"
+            className="ms-4"
+            style={{ height: "10em", objectFit: "cover" }}
+          />
+          <br />
+          <h4 className="mt-4 secondary-color fw-bold">Seamless parking</h4>
+          <br />
+          <p className="text-muted text-center mb-4">
+            Reduces time spent circling around looking for a spot
+          </p>
+        </Col>
+        <Col lg={4} className="text-center">
+          <img
+            src={icon2}
+            alt="Happy driver"
+            className="ms-4"
+            style={{ height: "10em", objectFit: "cover" }}
+          />
+          <br />
+          <h4 className="mt-4 secondary-color fw-bold">Anytime, anywhere</h4>
+          <br />
+          <p className="text-muted text-center mb-4">
+            Real-time availability of parking spots, ensuring drivers can book a
+            spot that is genuinely available
+          </p>
+        </Col>
+        <Col lg={4} className="text-center">
+          <img
+            src={icon4}
+            alt="Happy driver"
+            className="ms-4"
+            style={{ height: "10em", objectFit: "cover" }}
+          />
+          <br />
+          <h4 className="mt-4 secondary-color fw-bold">Unlimited locations</h4>
+          <br />
+          <p className="text-muted text-center mb-4">
+            Offering Unlimited Locations for a parking service
+          </p>
+        </Col>
+      </div>
+      <Col lg={12} className="text-center">
         <h1 className="display-4 fw-bold mb-4 secondary-color">
           What <span className="primary-color">{"{ clients say }"}</span>
         </h1>
       </Col>
-      <Col lg={12} className="mt-5">
+      <Col lg={12} className="mt-5 customMb">
         <div className="d-flex justify-content-between">
           {reviews.length > 0 &&
             reviews.map((review, index) => (

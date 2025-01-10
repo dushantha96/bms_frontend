@@ -14,8 +14,8 @@ const Contact = () => {
       <Col lg={6} className="text-center mb-5">
         <img src={home} alt="Happy driver" style={{ height: "25em" }} />
       </Col>
-      <Col lg={6} className="text-center">
-        <h4 className="mb-4 fw-bold primary-color">BOOk MY SPOT (PVT) LTD</h4>
+      <Col lg={6} className="text-center align-content-center">
+        <h4 className="mb-4 fw-bold primary-color">BOOK MY SPOT (PVT) LTD</h4>
         <p className="text-muted mb-4 fw-bold">
           Dunn's Hat Factory
           <br />
@@ -38,7 +38,7 @@ const Contact = () => {
             aria-label="Telephone"
             className="contactNo txt-muted"
           >
-            <span className="fw-bold contactNumber">call us on +44 1234 123456</span>{" "}
+            <span className="fw-bold contactNumber">Call Us on +44 1234 123456</span>{" "}
           </a>
         </p>
       </Col>
